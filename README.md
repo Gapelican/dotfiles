@@ -5,7 +5,7 @@ Configuração automatizada do ambiente de desenvolvimento para WSL + Arch Linux
 ## 📋 O que será instalado
 
 - **Shell:** Fish + Starship (prompt customizado)
-- **Node.js:** Via NVM com versão LTS
+- **Node.js:** Via pacman (gerenciador nativo do Arch)
 - **PHP 8.4:** Via Laravel Herd Lite
 - **Composer:** Gerenciador de dependências PHP
 - **Laravel:** Framework PHP + Laravel Installer
@@ -187,9 +187,9 @@ sail up                          # Docker Sail (dentro do projeto)
 
 ### Node.js
 ```bash
-nvm install --lts                # Instalar Node LTS
-nvm use --lts                    # Usar Node LTS
-nvm list                         # Listar versões instaladas
+node --version                   # Ver versão instalada
+npm install -g <pacote>          # Instalar pacote global
+npx create-next-app              # Criar app Next.js
 ```
 
 ### Git
@@ -221,11 +221,10 @@ echo 'set -gx PATH $HOME/.config/herd-lite/bin $PATH' >> ~/.config/fish/config.f
 source ~/.config/fish/config.fish
 ```
 
-### NVM não funciona no Fish
+### Node.js não encontrado
 ```bash
-# Instalar Fisher e nvm.fish
-fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
-fish -c "fisher install jorgebucaran/nvm.fish"
+# Reinstalar Node.js
+sudo pacman -S nodejs npm
 ```
 
 ### Starship não aparece
@@ -237,8 +236,7 @@ source ~/.config/fish/config.fish
 ## 📝 Notas
 
 - O PHP é instalado via **Herd Lite** (solução oficial do Laravel)
-- O Node.js é gerenciado via **NVM** para fácil troca de versões
-- O Fish usa **Fisher + nvm.fish** para integração com NVM
+- O Node.js é instalado via **pacman** (gerenciador nativo do Arch Linux)
 - Systemd está habilitado para gerenciar serviços
 
 ## 🔗 Links Úteis

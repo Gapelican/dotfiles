@@ -1,10 +1,6 @@
 # Starship
 starship init fish | source
 
-# NVM (Node Version Manager)
-# O plugin nvm.fish (via Fisher) gerencia isso automaticamente
-# Não precisa de configuração manual aqui
-
 # Aliases úteis
 alias ls='ls --color=auto'
 alias ll='ls -lah'
