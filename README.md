@@ -223,8 +223,9 @@ source ~/.config/fish/config.fish
 
 ### NVM não funciona no Fish
 ```bash
-# Instalar Bass e configurar NVM
-omf install bass
+# Instalar Fisher e nvm.fish
+fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
+fish -c "fisher install jorgebucaran/nvm.fish"
 ```
 
 ### Starship não aparece
@@ -237,7 +238,7 @@ source ~/.config/fish/config.fish
 
 - O PHP é instalado via **Herd Lite** (solução oficial do Laravel)
 - O Node.js é gerenciado via **NVM** para fácil troca de versões
-- O Fish usa **Bass** para compatibilidade com scripts bash (como NVM)
+- O Fish usa **Fisher + nvm.fish** para integração com NVM
 - Systemd está habilitado para gerenciar serviços
 
 ## 🔗 Links Úteis

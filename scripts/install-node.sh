@@ -14,12 +14,12 @@ nvm install --lts
 nvm use --lts
 
 echo ""
-echo "🎸 Instalando Oh My Fish para compatibilidade..."
-curl -L https://get.oh-my.fish | fish
+echo "🎣 Instalando Fisher (gerenciador de plugins do Fish)..."
+fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 
 echo ""
-echo "🔧 Instalando Bass (helper do NVM para Fish)..."
-fish -c "omf install bass"
+echo "🔧 Instalando nvm.fish (plugin NVM para Fish)..."
+fish -c "fisher install jorgebucaran/nvm.fish"
 
 echo ""
 echo "✅ Node.js instalado com sucesso!"
