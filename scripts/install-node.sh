@@ -22,16 +22,9 @@ echo "🔧 Instalando Bass (helper do NVM para Fish)..."
 fish -c "omf install bass"
 
 echo ""
-echo "🔧 Criando função NVM para Fish..."
-mkdir -p ~/.config/fish/functions
-cat > ~/.config/fish/functions/nvm.fish << 'EOF'
-function nvm
-    bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
-end
-EOF
-
-echo ""
 echo "✅ Node.js instalado com sucesso!"
+echo ""
+echo "⚠️  IMPORTANTE: Reinicie o terminal ou execute: source ~/.config/fish/config.fish"
 echo ""
 node --version
 npm --version
