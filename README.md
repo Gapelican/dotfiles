@@ -242,7 +242,14 @@ curl -fsSL https://fnm.vercel.app/install | bash
 
 # Configurar fnm no Fish (criar arquivo de configuração)
 mkdir -p ~/.config/fish/conf.d
-echo "fnm env --use-on-cd --shell fish | source" > ~/.config/fish/conf.d/fnm.fish
+cat > ~/.config/fish/conf.d/fnm.fish << 'EOF'
+# Adicionar fnm ao PATH
+set -gx PATH "$HOME/.local/share/fnm" $PATH
+# Carregar fnm env se disponível
+if type -q fnm
+    fnm env --use-on-cd --shell fish | source
+end
+EOF
 
 # Recarregar Fish
 source ~/.config/fish/config.fish
