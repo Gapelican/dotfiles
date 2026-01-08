@@ -1,7 +1,8 @@
 #!/bin/bash
 
 echo "📗 Instalando fnm (Fast Node Manager)..."
-sudo pacman -S --noconfirm fnm
+# fnm não está no repositório oficial do Arch, usar script oficial
+curl -fsSL https://fnm.vercel.app/install | bash
 
 echo ""
 echo "🔧 Configurando fnm no Fish..."
