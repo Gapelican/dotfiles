@@ -5,7 +5,7 @@ Configuração automatizada do ambiente de desenvolvimento para WSL + Arch Linux
 ## 📋 O que será instalado
 
 - **Shell:** Fish + Starship (prompt customizado)
-- **Node.js:** Via NVM com versão LTS
+- **Node.js:** Via fnm (Fast Node Manager - gerenciador moderno de versões)
 - **PHP 8.4:** Via Laravel Herd Lite
 - **Composer:** Gerenciador de dependências PHP
 - **Laravel:** Framework PHP + Laravel Installer
@@ -185,11 +185,22 @@ art migrate                      # Rodar migrations (dentro do projeto)
 sail up                          # Docker Sail (dentro do projeto)
 ```
 
-### Node.js
+### Node.js (via fnm)
 ```bash
-nvm install --lts                # Instalar Node LTS
-nvm use --lts                    # Usar Node LTS
-nvm list                         # Listar versões instaladas
+fnm list                         # Listar versões instaladas
+fnm install 20                   # Instalar Node 20
+fnm use 20                       # Usar Node 20
+fnm default 20                   # Definir Node 20 como padrão
+node --version                   # Ver versão atual
+npm install -g <pacote>          # Instalar pacote global
+npx create-next-app              # Criar app Next.js
+```
+
+**Troca automática de versão:**
+```bash
+# Criar .node-version na raiz do projeto
+echo "20" > .node-version
+# fnm troca automaticamente ao entrar na pasta!
 ```
 
 ### Git
@@ -221,10 +232,17 @@ echo 'set -gx PATH $HOME/.config/herd-lite/bin $PATH' >> ~/.config/fish/config.f
 source ~/.config/fish/config.fish
 ```
 
-### NVM não funciona no Fish
+### Node.js não encontrado
 ```bash
-# Instalar Bass e configurar NVM
-omf install bass
+# Verificar se fnm está instalado
+fnm --version
+
+# Se não estiver, instalar
+sudo pacman -S fnm
+
+# Instalar Node LTS
+fnm install --lts
+fnm use lts-latest
 ```
 
 ### Starship não aparece
@@ -236,8 +254,8 @@ source ~/.config/fish/config.fish
 ## 📝 Notas
 
 - O PHP é instalado via **Herd Lite** (solução oficial do Laravel)
-- O Node.js é gerenciado via **NVM** para fácil troca de versões
-- O Fish usa **Bass** para compatibilidade com scripts bash (como NVM)
+- O Node.js é gerenciado via **fnm** (Fast Node Manager - moderno, rápido, suporta múltiplas versões)
+- O fnm troca automaticamente a versão do Node baseado no arquivo `.node-version` do projeto
 - Systemd está habilitado para gerenciar serviços
 
 ## 🔗 Links Úteis
@@ -245,7 +263,7 @@ source ~/.config/fish/config.fish
 - [Laravel Docs](https://laravel.com/docs)
 - [Fish Shell](https://fishshell.com/)
 - [Starship](https://starship.rs/)
-- [NVM](https://github.com/nvm-sh/nvm)
+- [fnm (Fast Node Manager)](https://github.com/Schniz/fnm)
 
 ## 📄 Licença
 
