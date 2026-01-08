@@ -18,13 +18,13 @@ Configuração automatizada do ambiente de desenvolvimento para WSL + Arch Linux
 1. **Instale o Arch Linux no WSL**
    ```powershell
    # No PowerShell do Windows
-   wsl --install -d Arch
+   wsl --install -d archlinux
    ```
 
 2. **Configure o usuário inicial (rode como root)**
    ```bash
    # Dentro do Arch WSL
-   curl -fsSL https://raw.githubusercontent.com/SEU-USUARIO/dotfiles/main/bootstrap.sh | bash
+   curl -fsSL https://raw.githubusercontent.com/Gapelican/dotfiles/main/bootstrap.sh | bash
    ```
 
 3. **Clone e execute a instalação**
