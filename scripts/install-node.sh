@@ -9,7 +9,13 @@ echo "🔧 Configurando fnm no Fish..."
 mkdir -p ~/.config/fish/conf.d
 cat > ~/.config/fish/conf.d/fnm.fish << 'EOF'
 # fnm (Fast Node Manager) - Troca automática de versão do Node
-fnm env --use-on-cd --shell fish | source
+# Adicionar fnm ao PATH primeiro
+set -gx PATH "$HOME/.local/share/fnm" $PATH
+
+# Só carregar fnm env se o comando existir
+if type -q fnm
+    fnm env --use-on-cd --shell fish | source
+end
 EOF
 
 echo ""
