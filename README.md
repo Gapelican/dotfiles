@@ -11,55 +11,133 @@ Configuração automatizada do ambiente de desenvolvimento para WSL + Arch Linux
 - **Laravel:** Framework PHP + Laravel Installer
 - **Ferramentas:** Git, Curl, Wget, Vim, Btop, FZF, Ripgrep, e mais
 
+## ⚙️ Setup Inicial do WSL (Primeira Vez)
+
+Se você está configurando um **PC novo** com Arch Linux no WSL, siga estes passos **manuais** primeiro:
+
+### 1. Instalar Arch Linux no WSL
+
+```powershell
+# No PowerShell do Windows (como Administrador)
+wsl --install -d archlinux
+```
+
+Após a instalação, o WSL vai abrir automaticamente como `root`.
+
+### 2. Atualizar o sistema
+
+```bash
+# Dentro do Arch WSL (como root)
+pacman -Syu
+```
+
+### 3. Instalar pacotes essenciais
+
+```bash
+pacman -S sudo vim git
+```
+
+### 4. Criar seu usuário
+
+```bash
+# Substitua 'seuusuario' pelo nome desejado
+useradd -m -G wheel -s /bin/bash seuusuario
+passwd seuusuario
+```
+
+### 5. Configurar sudo para o grupo wheel
+
+```bash
+# Editar sudoers com visudo (mais seguro)
+EDITOR=vim visudo
+
+# Descomente a linha (remova o #):
+# %wheel ALL=(ALL:ALL) ALL
+```
+
+### 6. Configurar usuário padrão no WSL
+
+```bash
+# Criar arquivo de configuração do WSL
+cat > /etc/wsl.conf << EOF
+[boot]
+systemd=true
+
+[user]
+default=seuusuario
+EOF
+```
+
+### 7. Reiniciar o WSL
+
+```powershell
+# No PowerShell do Windows
+wsl --shutdown
+```
+
+Ao abrir o terminal novamente, você entrará automaticamente como seu usuário (não mais como root).
+
+---
+
 ## 🎯 Instalação Rápida
 
 ### Primeira vez (PC novo)
 
-1. **Instale o Arch Linux no WSL**
-   ```powershell
-   # No PowerShell do Windows
-   wsl --install -d archlinux
-   ```
+**Pré-requisito:** Complete o [Setup Inicial do WSL](#️-setup-inicial-do-wsl-primeira-vez) primeiro.
 
-2. **Configure o usuário inicial (rode como root)**
-   ```bash
-   # Dentro do Arch WSL
-   curl -fsSL https://raw.githubusercontent.com/Gapelican/dotfiles/main/bootstrap.sh | bash
-   ```
+Depois do setup inicial:
 
-3. **Clone e execute a instalação**
+1. **Clone o repositório**
    ```bash
-   # Agora como seu usuário
    git clone https://github.com/SEU-USUARIO/dotfiles.git ~/dotfiles
    cd ~/dotfiles
+   ```
+
+2. **Torne os scripts executáveis**
+   ```bash
    chmod +x install.sh scripts/*.sh
+   ```
+
+3. **Execute a instalação**
+   ```bash
    ./install.sh
    ```
 
 4. **Reinicie o terminal**
    ```powershell
-   # No PowerShell
+   # No PowerShell do Windows
    wsl --shutdown
    ```
+
+### PC já configurado
+
+Se o sistema já está configurado e você só quer reinstalar os dotfiles:
+
+```bash
+git clone https://github.com/SEU-USUARIO/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+chmod +x install.sh scripts/*.sh
+./install.sh
+```
 
 ## 📁 Estrutura do Repositório
 
 ```
 dotfiles/
 ├── install.sh              # Script principal de instalação
-├── bootstrap.sh            # Configuração inicial do sistema (root)
 ├── configs/
 │   └── .config/
 │       ├── fish/
-│       │   └── config.fish
-│       └── starship.toml
+│       │   └── config.fish # Aliases e configurações do Fish
+│       └── starship.toml   # Tema do prompt
 ├── scripts/
 │   ├── install-base.sh     # Pacotes essenciais
 │   ├── install-fish.sh     # Fish + Starship
 │   ├── install-node.sh     # Node.js + NVM
 │   ├── install-php.sh      # PHP + Composer + Laravel
 │   └── verify.sh           # Verificação da instalação
-└── README.md
+├── .gitignore              # Arquivos ignorados pelo Git
+└── README.md               # Este arquivo
 ```
 
 ## 🔧 Scripts Individuais
