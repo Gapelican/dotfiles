@@ -1,0 +1,58 @@
+# Arquivos sensíveis
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.ppk
+id_rsa
+id_rsa.pub
+id_dsa
+id_dsa.pub
+id_ecdsa
+id_ecdsa.pub
+id_ed25519
+id_ed25519.pub
+*.ovpn
+credentials.json
+secrets.json
+*secret*
+*token*
+
+# SSH
+.ssh/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.pnpm-debug.log*
+
+# PHP / Composer
+vendor/
+composer.lock
+composer.phar
+
+# IDEs e Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Temporários
+*.tmp
+*.temp
+.cache/
+
+# Sistema
+Thumbs.db
+ehthumbs.db
+Desktop.ini

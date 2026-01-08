@@ -139,7 +139,7 @@ git push
 ### PHP/Composer não encontrado
 ```bash
 # Adicionar ao PATH manualmente
-echo 'set -gx PATH /home/gabriel/.config/herd-lite/bin $PATH' >> ~/.config/fish/config.fish
+echo 'set -gx PATH $HOME/.config/herd-lite/bin $PATH' >> ~/.config/fish/config.fish
 source ~/.config/fish/config.fish
 ```
 

@@ -23,7 +23,7 @@ alias gl='git pull'
 set -x EDITOR vim
 
 # PATH - Herd Lite (PHP)
-set -gx PATH /home/gabriel/.config/herd-lite/bin $PATH
+set -gx PATH $HOME/.config/herd-lite/bin $PATH
 
 # PATH - Composer
 set -gx PATH $PATH ~/.config/composer/vendor/bin
