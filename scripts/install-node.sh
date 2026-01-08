@@ -5,14 +5,18 @@ sudo pacman -S --noconfirm fnm
 
 echo ""
 echo "🔧 Configurando fnm no Fish..."
-# A configuração será feita pelo config.fish
+mkdir -p ~/.config/fish/conf.d
+cat > ~/.config/fish/conf.d/fnm.fish << 'EOF'
+# fnm (Fast Node Manager) - Troca automática de versão do Node
+fnm env --use-on-cd --shell fish | source
+EOF
 
 echo ""
 echo "📦 Instalando Node.js LTS..."
 # Inicializar fnm temporariamente para instalar Node
 eval "$(fnm env --shell bash)"
 fnm install --lts
-fnm use lts-latest
+fnm default lts-latest
 
 echo ""
 echo "✅ fnm e Node.js instalados com sucesso!"

@@ -1,11 +1,6 @@
 # Starship
 starship init fish | source
 
-# fnm (Fast Node Manager) - Troca automática de versão do Node
-if type -q fnm
-    fnm env --use-on-cd | source
-end
-
 # Aliases úteis
 alias ls='ls --color=auto'
 alias ll='ls -lah'

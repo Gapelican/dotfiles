@@ -237,12 +237,19 @@ source ~/.config/fish/config.fish
 # Verificar se fnm está instalado
 fnm --version
 
-# Se não estiver, instalar
+# Se não estiver, instalar fnm
 sudo pacman -S fnm
 
-# Instalar Node LTS
+# Configurar fnm no Fish (criar arquivo de configuração)
+mkdir -p ~/.config/fish/conf.d
+echo "fnm env --use-on-cd --shell fish | source" > ~/.config/fish/conf.d/fnm.fish
+
+# Recarregar Fish
+source ~/.config/fish/config.fish
+
+# Instalar Node LTS e definir como padrão
 fnm install --lts
-fnm use lts-latest
+fnm default lts-latest
 ```
 
 ### Starship não aparece
@@ -256,6 +263,7 @@ source ~/.config/fish/config.fish
 - O PHP é instalado via **Herd Lite** (solução oficial do Laravel)
 - O Node.js é gerenciado via **fnm** (Fast Node Manager - moderno, rápido, suporta múltiplas versões)
 - O fnm troca automaticamente a versão do Node baseado no arquivo `.node-version` do projeto
+- A configuração do fnm fica em `~/.config/fish/conf.d/fnm.fish` (carregada automaticamente pelo Fish)
 - Systemd está habilitado para gerenciar serviços
 
 ## 🔗 Links Úteis
