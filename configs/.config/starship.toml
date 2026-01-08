@@ -2,27 +2,27 @@
 format = "$directory$git_branch$git_status$nodejs$php$character"
 
 [directory]
-style = "bold cyan"
+style = "blue bold"
 truncation_length = 3
 truncate_to_repo = true
 
 [git_branch]
-symbol = " "
+symbol = "🌱 "
 style = "bold purple"
 
 [git_status]
-style = "bold red"
+style = "red bold"
 
 [nodejs]
-symbol = "node "
+symbol = "⬢ "
 style = "bold green"
-format = "[$symbol($version )]($style)"
+format = "via [$symbol($version )]($style)"
 
 [php]
-symbol = "php "
+symbol = "🐘 "
 style = "bold blue"
-format = "[$symbol($version )]($style)"
+format = "via [$symbol($version )]($style)"
 
 [character]
-success_symbol = "[>](bold green)"
-error_symbol = "[>](bold red)"
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
