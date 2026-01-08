@@ -21,3 +21,9 @@ alias gl='git pull'
 
 # Variáveis de ambiente
 set -x EDITOR vim
+
+# PATH - Herd Lite (PHP)
+set -gx PATH /home/gabriel/.config/herd-lite/bin $PATH
+
+# PATH - Composer
+set -gx PATH $PATH ~/.config/composer/vendor/bin

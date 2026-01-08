@@ -3,27 +3,35 @@
 echo "📗 Instalando NVM..."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
-echo "🔧 Configurando NVM no Fish..."
-mkdir -p ~/.config/fish/conf.d
-echo 'set -gx NVM_DIR "$HOME/.nvm"' > ~/.config/fish/conf.d/nvm.fish
+echo ""
+echo "🔧 Configurando NVM..."
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# Instalar Bass para compatibilidade NVM com Fish
-echo "🎸 Instalando Bass (helper para Fish)..."
+echo ""
+echo "📦 Instalando Node.js LTS..."
+nvm install --lts
+nvm use --lts
+
+echo ""
+echo "🎸 Instalando Oh My Fish para compatibilidade..."
 curl -L https://get.oh-my.fish | fish
-omf install bass
 
-# Adicionar função NVM ao Fish
-cat >> ~/.config/fish/functions/nvm.fish << 'EOF'
+echo ""
+echo "🔧 Instalando Bass (helper do NVM para Fish)..."
+fish -c "omf install bass"
+
+echo ""
+echo "🔧 Criando função NVM para Fish..."
+mkdir -p ~/.config/fish/functions
+cat > ~/.config/fish/functions/nvm.fish << 'EOF'
 function nvm
     bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
 end
 EOF
 
-echo "📦 Instalando Node.js LTS..."
-source ~/.nvm/nvm.sh
-nvm install --lts
-nvm use --lts
-
-echo "✅ Node.js instalado! Versão:"
+echo ""
+echo "✅ Node.js instalado com sucesso!"
+echo ""
 node --version
 npm --version

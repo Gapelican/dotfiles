@@ -3,6 +3,7 @@
 echo "🔧 Atualizando sistema..."
 sudo pacman -Syu --noconfirm
 
+echo ""
 echo "📦 Instalando pacotes essenciais..."
 sudo pacman -S --noconfirm \
     base-devel \
@@ -10,8 +11,16 @@ sudo pacman -S --noconfirm \
     curl \
     wget \
     unzip \
+    zip \
     vim \
+    nano \
     btop \
-    fzf
+    fzf \
+    ripgrep \
+    fd \
+    bat \
+    eza \
+    openssh
 
-echo "✅ Base instalada!"
+echo ""
+echo "✅ Pacotes base instalados com sucesso!"
