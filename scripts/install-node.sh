@@ -19,18 +19,13 @@ end
 EOF
 
 echo ""
-echo "📦 Instalando Node.js LTS..."
-# Inicializar fnm temporariamente para instalar Node
-eval "$(fnm env --shell bash)"
-fnm install --lts
-fnm default lts-latest
-
+echo "✅ fnm instalado com sucesso!"
 echo ""
-echo "✅ fnm e Node.js instalados com sucesso!"
+echo "⚠️  PRÓXIMO PASSO: Instalar Node.js"
+echo "  Feche e abra o terminal novamente, depois execute:"
 echo ""
-node --version
-npm --version
-
+echo "  fnm install --lts           # Instalar Node.js LTS"
+echo "  fnm default lts-latest      # Definir como padrão"
 echo ""
 echo "💡 Comandos úteis do fnm:"
 echo "  fnm install 20      # Instalar Node 20"
