@@ -5,11 +5,14 @@ Configuração automatizada do ambiente de desenvolvimento para WSL + Arch Linux
 ## 📋 O que será instalado
 
 - **Shell:** Fish + Starship (prompt customizado)
-- **Node.js:** Via fnm (Fast Node Manager - gerenciador moderno de versões)
+- **fnm:** Fast Node Manager (gerenciador moderno de versões do Node.js)
 - **PHP 8.4:** Via Laravel Herd Lite
 - **Composer:** Gerenciador de dependências PHP
-- **Laravel:** Framework PHP + Laravel Installer
 - **Ferramentas:** Git, Curl, Wget, Vim, Btop, FZF, Ripgrep, e mais
+
+**Instalação manual após setup:**
+- **Node.js:** Instalar via fnm (instruções abaixo)
+- **Laravel Installer:** Instalar via Composer global
 
 ## ⚙️ Setup Inicial do WSL (Primeira Vez)
 
@@ -109,6 +112,16 @@ Depois do setup inicial:
    wsl --shutdown
    ```
 
+5. **Instale Node.js e Laravel Installer**
+   ```bash
+   # Instalar Node.js LTS via fnm
+   fnm install --lts
+   fnm default lts-latest
+
+   # Instalar Laravel Installer via Composer
+   composer global require laravel/installer
+   ```
+
 ### PC já configurado
 
 Se o sistema já está configurado e você só quer reinstalar os dotfiles:
@@ -148,8 +161,9 @@ Se preferir instalar apenas partes específicas:
 # Apenas Fish + Starship
 bash scripts/install-fish.sh
 
-# Apenas Node.js
+# Apenas fnm (gerenciador de versões Node.js)
 bash scripts/install-node.sh
+# Depois: fnm install --lts && fnm default lts-latest
 
 # Apenas PHP + Laravel
 bash scripts/install-php.sh
